@@ -1,1 +1,1 @@
-export * from './app-page/app-page';
+export * from './send-email-dialog/send-email-dialog';
