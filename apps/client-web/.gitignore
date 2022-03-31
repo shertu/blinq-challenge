@@ -1,0 +1,11 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next
+
+# static folder for DigitalOcean App Platform
+/_static
+
+# misc
+.env*

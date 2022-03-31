@@ -1,0 +1,8 @@
+# dependencies
+/node_modules
+
+# pnpm
+package-lock.json
+pnpm-lock.yaml
+!/pnpm-lock.yaml
+.pnpm-debug.log
