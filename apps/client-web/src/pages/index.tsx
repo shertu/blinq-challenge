@@ -1,3 +1,4 @@
+import {Typography} from '@mui/material';
 import {AppPage} from 'components';
 
 import Head from 'next/head';
@@ -18,7 +19,9 @@ export function LandingPage() {
       <AppPage
         className="min-h-screen pt-office-word px-6"
         id={landingScreenScrollToId}
-      ></AppPage>
+      >
+        <Typography>Apple</Typography>
+      </AppPage>
     </>
   );
 }
