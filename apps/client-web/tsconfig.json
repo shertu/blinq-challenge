@@ -5,10 +5,7 @@
     "baseUrl": ".", // this must be specified if "paths" is specified.
     "paths": {
       "components": ["src/components/index.tsx"],
-      "styles*": ["src/styles*"],
-      "hooks*": ["src/custom-hooks*"],
-      "logic*": ["src/business-logic*"],
-      "icons*": ["src/icons*"]
+      "styles*": ["src/styles*"]
     },
     "allowJs": true,
     "skipLibCheck": true,

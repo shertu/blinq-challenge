@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@babel/core": "7.0.0",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.5.0",
