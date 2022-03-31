@@ -23,43 +23,51 @@ export function SendEmailForm(props: FormikProps<SendEmailFormV>) {
 
   return (
     <form noValidate onSubmit={handleSubmit}>
-      <TextField
-        fullWidth
-        name="name"
-        label="Full name"
-        value={values.name}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={touched.name && !!errors.name}
-        helperText={touched.name && errors.name}
-      />
+      <div className="space-y-4">
+        <TextField
+          fullWidth
+          name="name"
+          label="Full name"
+          value={values.name}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={touched.name && !!errors.name}
+          helperText={touched.name && errors.name}
+        />
 
-      <TextField
-        fullWidth
-        name="email"
-        label="Email"
-        type="email"
-        value={values.email}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={touched.email && !!errors.email}
-        helperText={touched.email && errors.email}
-      />
+        <TextField
+          fullWidth
+          name="email"
+          label="Email"
+          type="email"
+          value={values.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={touched.email && !!errors.email}
+          helperText={touched.email && errors.email}
+        />
 
-      <TextField
-        fullWidth
-        name="emailConfirmation"
-        label="Confirm email"
-        type="email"
-        value={values.emailConfirmation}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={touched.emailConfirmation && !!errors.emailConfirmation}
-        helperText={touched.emailConfirmation && errors.emailConfirmation}
-      />
+        <TextField
+          fullWidth
+          name="emailConfirmation"
+          label="Confirm email"
+          type="email"
+          value={values.emailConfirmation}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={touched.emailConfirmation && !!errors.emailConfirmation}
+          helperText={touched.emailConfirmation && errors.emailConfirmation}
+        />
+      </div>
 
-      <FormControl>
-        <Button fullWidth type="submit" color="primary" disabled={isSubmitting}>
+      <FormControl fullWidth className="mt-12">
+        <Button
+          fullWidth
+          type="submit"
+          color="primary"
+          disabled={isSubmitting}
+          variant="outlined"
+        >
           Send
         </Button>
       </FormControl>

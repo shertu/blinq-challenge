@@ -1,9 +1,14 @@
-import {Button, Typography} from '@mui/material';
+import {Button, Divider, Typography} from '@mui/material';
+import clsx from 'clsx';
 
 import React from 'react';
 import {SendEmailFormik} from '../send-email-formik/send-email-formik';
 
-export interface SendEmailStepperP {
+export interface SendEmailStepperP
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
   onFinish?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -11,30 +16,40 @@ export interface SendEmailStepperP {
  * A pseudo stepper component to manage the send email flow.
  */
 export function SendEmailStepper(props: SendEmailStepperP) {
+  const {onFinish, className, ...other} = props;
+
   const [activeStep, setActiveStep] = React.useState<number>(0);
 
-  function onSuccessfulEmailSend() {
-    setActiveStep(1);
-  }
+  /** @todo DRY up the following code. */
 
   return (
-    <>
+    <div className={clsx('p-12', className)} {...other}>
       {activeStep === 0 && (
-        <div>
-          <SendEmailFormik onSubmit={onSuccessfulEmailSend} />
+        <div className="flex flex-col items-center text-center">
+          <Typography variant="h5" component="p">
+            Request an invite
+          </Typography>
+          <Divider className="mt-4 mb-8 w-[5ch]" />
+          <SendEmailFormik onfulfilledFetchHook={() => setActiveStep(1)} />
         </div>
       )}
       {activeStep === 1 && (
-        <div>
-          <Typography>All Done!</Typography>
-          <Typography>
-            You will be one of the first to experience Broccoli &amp; Co. when
-            we launch.
+        <div className="flex flex-col items-center text-center">
+          <Typography variant="h5" component="p">
+            All Done!
           </Typography>
-          <Button onClick={props.onFinish}>OK</Button>
+          <Divider className="mt-4 mb-8 w-[5ch]" />
+
+          <Typography className="mb-8">
+            You will be one of the first to experience <br /> Broccoli &amp; Co.
+            when we launch.
+          </Typography>
+          <Button fullWidth onClick={onFinish} variant="outlined">
+            OK
+          </Button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

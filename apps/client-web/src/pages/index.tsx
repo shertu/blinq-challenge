@@ -1,12 +1,9 @@
-import {Button, Container, Typography} from '@mui/material';
-import {SendEmailDialog} from 'components';
+import {AppBar, Button, Container, Dialog, Typography} from '@mui/material';
+import {SendEmailStepper} from 'components';
 
 import React from 'react';
 
-/**
- * The page the user scrolls down to after seeing the landing screen.
- */
-export function LandingPage() {
+export function SendEmailPage() {
   const [sedOpen, setsedOpen] = React.useState<boolean>(false);
 
   function handleClickOpen() {
@@ -19,18 +16,26 @@ export function LandingPage() {
 
   return (
     <>
-      <div className="min-h-screen">
-        <header>
-          <Typography>Broccoli &amp; Co.</Typography>
-        </header>
-        {/* <div className="min-h-screen"> */}
+      <div className="min-h-screen flex flex-col">
+        <AppBar position="static" color="transparent" className="px-8 py-5">
+          <Typography className="uppercase">Broccoli &amp; Co.</Typography>
+        </AppBar>
 
-        <Container fixed>
-          <Typography>A better way to enjoy everyday.</Typography>
+        <Container
+          fixed
+          className="mt-[2.53cm] flex flex-col items-center text-center space-y-4"
+          component="main"
+        >
+          <Typography variant="h2" component="p">
+            A better way <br /> to enjoy everyday.
+          </Typography>
           <Typography>Be the first to know when we launch.</Typography>
-          <Button onClick={handleClickOpen}>Request an invite</Button>
+          <Button onClick={handleClickOpen} variant="outlined">
+            request an invite
+          </Button>
         </Container>
-        <footer>
+        <div className="grow" />
+        <footer className="px-8 py-5 border-solid border-x-0 border-b-0 border-black flex flex-col items-center text-center">
           <Typography>Made with ❤ in Melbourne.</Typography>
           <Typography>
             &copy; 2016 Broccoli &amp; Co. All rights reserved.
@@ -38,13 +43,11 @@ export function LandingPage() {
         </footer>
       </div>
 
-      <SendEmailDialog
-        onClose={handleClose}
-        open={sedOpen}
-        onFinish={handleClose}
-      />
+      <Dialog onClose={handleClose} open={sedOpen}>
+        <SendEmailStepper onFinish={handleClose} />
+      </Dialog>
     </>
   );
 }
 
-export default LandingPage;
+export default SendEmailPage;

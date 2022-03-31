@@ -6,7 +6,7 @@
     "paths": {
       "components": ["src/components/index.tsx"],
       "styles*": ["src/styles*"],
-      "business*": ["src/business/index.ts"]
+      "business": ["src/business/index.ts"]
     },
     "allowJs": true,
     "skipLibCheck": true,

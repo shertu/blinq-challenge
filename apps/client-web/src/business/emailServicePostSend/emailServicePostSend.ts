@@ -3,7 +3,7 @@ export interface EmailServicePostSendRequest {
   email?: string;
 }
 
-export async function emailServicePostSend(
+export async function emailServicePostSendRaw(
   request: EmailServicePostSendRequest
 ) {
   return await fetch(
@@ -11,6 +11,20 @@ export async function emailServicePostSend(
     {
       method: 'POST',
       body: JSON.stringify(request),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     }
   );
+}
+
+export async function emailServicePostSend(
+  request: EmailServicePostSendRequest
+) {
+  const response = await emailServicePostSendRaw(request);
+  if (response.ok) {
+    return null;
+  } else {
+    throw response;
+  }
 }
