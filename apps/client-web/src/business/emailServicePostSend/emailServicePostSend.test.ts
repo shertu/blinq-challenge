@@ -1,5 +1,5 @@
 import {
-  emailServicePostSend,
+  emailServicePostSendRaw,
   EmailServicePostSendRequest,
 } from './emailServicePostSend';
 
@@ -9,7 +9,7 @@ test('send email with valid inputs', async () => {
     name: 'Jared Michael Blackman',
   };
 
-  const response = await emailServicePostSend(r);
+  const response = await emailServicePostSendRaw(r);
   expect(response.ok).toBeTruthy();
 });
 
@@ -21,7 +21,7 @@ test('send email with usedemail@blinq.app email address', async () => {
 
   expect.assertions(1);
   try {
-    await emailServicePostSend(r);
+    await emailServicePostSendRaw(r);
   } catch (e) {
     const response = e as Response;
     expect(response.ok).toBeFalsy();
